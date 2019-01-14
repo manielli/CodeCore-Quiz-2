@@ -1,12 +1,12 @@
 class Idea < ApplicationRecord
     validates(
         :title,
-        present: true,
+        presence: true,
         uniqueness: true
     )
 
     validates(
         :description,
-        present: true
+        presence: true
     )
 end
