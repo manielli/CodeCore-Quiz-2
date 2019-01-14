@@ -9,7 +9,7 @@
             <p class="card-text text-dark">
                 <%= link_to(idea.description, idea_path(idea.id)) %>
             </p>
-            <small class="card-text text-dark" >Created <%= time_ago_in_words(@idea.created_at) %> ago </small>
+            <small class="card-text text-dark" >Created <%= time_ago_in_words(idea.created_at) %> ago </small>
         <% end %>
     </div>
 </ul>
