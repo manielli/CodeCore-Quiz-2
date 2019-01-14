@@ -13,7 +13,7 @@ Idea.destroy_all
     created_at = Faker::Date.backward(60)
 
     i = Idea.create(
-        title: Faker::Lorem.sentence(1, true, 2),
+        title: Faker::Lorem.sentence(1, true, 3),
         description: Faker::Lorem.paragraph(3, true, 3),
         created_at: created_at,
         updated_at: created_at
