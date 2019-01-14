@@ -1,0 +1,14 @@
+<h1>Idea Factory</h1>
+
+<ul class="idea-list card">
+    <div class="card-body">
+        <% @ideas.each do |idea| %>
+            <h5 class="card card-title m-2" >
+                <%= link_to(idea.title, idea_path(idea.id)) %>
+            </h5>
+            <p class="card-text text-dark">
+                <%= link_to(idea.description, idea_path(idea.id)) %>
+            </p>
+        <% end %>
+    </div>
+</ul>

@@ -1,0 +1,25 @@
+<div class="mt-2">
+
+    <%= form_with(model: @idea, local: true) do |form| %>
+        
+        <% if @idea.errors.present? %>
+            <p class="form-errors">
+                <%= @idea.errors.full_messages.join(", ") %>    
+            </p>
+        <% end %>
+
+        <div class="card card-body m-2">
+            <%= form.label :title %>
+            <%= form.text_field :title %>
+        </div>
+
+        <div class="card card-body m-2">
+            <%= form.label :description %>
+            <%= form.text_area :description %>
+        </div>
+
+        <div class="btn m-2">
+            <%= form.submit "Submit Idea"%>
+        </div>
+    <% end %>
+</div>
