@@ -1,5 +1,5 @@
-<div class="card mt-2">
-    <div class="card-body">
+<form>
+    <div class="form-group">
         <%= form_with(model: @idea, local: true) do |form| %>
             
             <% if @idea.errors.present? %>
@@ -8,19 +8,19 @@
                 </p>
             <% end %>
 
-            <div class="card-title m-2">
-                <%= form.label :title %>
-                <%= form.text_field :title %>
+            <div class="form-group">
+                <label for="title"><%= form.label :title %></label>
+                <input type="text" class="form-control" placeholder="Enter a title for you idea (required)" ><%= form.text_field :title %>
             </div>
 
-            <div class="card-text text-dark m-2">
-                <%= form.label :description %>
-                <%= form.text_area :description %>
+            <div class="form-group">
+                <label for="description"><%= form.label :description %></label>
+                <input type="text" class="form-control" placeholder="Enter a description for your idea (also required)"><%= form.text_area :description %>
             </div>
 
-            <div class="btn btn-secondary m-2">
+            <button type="submit" class="btn btn-primary">
                 <%= form.submit "Submit Idea"%>
-            </div>
+            </button>
         <% end %>
     </div>
-</div>
+</form>
