@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card m-2">
     <div class="card-body">
         <h5 class="card-title m-2" >
             <%= @idea.title %>
@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<h2>Reviews</h2>
+<h2 class="m-2">Reviews</h2>
 
 <%= form_with(model: [@idea, @review], local: true) do |f| %>
     <% if @idea.errors.present? %>
@@ -38,14 +38,14 @@
         </p>
     <% end %>
 
-    <div>
+    <div class="m-2">
         <%= f.text_area(:body, cols: 50, rows: 5, placeholder: "What are your thoughts about this idea?") %>
     </div>
 
-    <%= f.submit "Submit Review" %>
+    <%= f.submit "Submit Review", class: "m-2 btn btn-primary" %>
 <% end %>
 
-<ul class="review-list">
+<ul class="review-list m-2">
     <% @reviews.each do |review| %>
         <li>
             <strong> <%= review.user.full_name %> submitted this review: </strong> <br>

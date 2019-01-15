@@ -12,30 +12,28 @@
   <body>
     <header>
       <nav class="navbar navbar-light bg-light">
-        <a href="#" class="navbar-brand"><%= link_to("Factory Idea", root_path) %></a>
+        <a class="navbar-brand text-primary" href="/">Idea Factory</a>
       
-        <div>
-          <ul class="navbar-nav">
-            <% if user_signed_in? %>
-              <li class="nav-item">
-                <a href="" class="nav-link"><%= link_to("New Idea", new_idea_path) %></a>
-              </li>
-            <% end %>
-            <% if user_signed_in? %>
-              <small>Hello <%= current_user.first_name %></small>
-              <li class="nav-item">
+        <ul class="nav form-inline">
+          <% if user_signed_in? %>
+            <li class="nav-item nav-link">
+              <a href=<%= new_idea_path %> class="nav-link">New Idea</a>
+            </li>
+          <% end %>
+          <% if user_signed_in? %>
+            <li>Hi, <%= current_user.first_name %></li>
+            <li class="nav-item nav-link">
                 <%= link_to("Logout", session_path, method: :delete, data: { confirm: "Are you sure you want to log out?"}) %>
-              </li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to("Sign In", new_session_path) %>
-              </li>
-              <li class="nav-item">
-                <%= link_to("Sign Up", new_user_path) %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
+            </li>
+          <% else %>
+            <li class="nav-item nav-link">
+              <%= link_to("Sign In", new_session_path) %>
+            </li> 
+            <li class="nav-item nav-link">
+              <%= link_to("Sign Up", new_user_path) %>
+            </li>
+          <% end %>
+        </ul>
       </nav>
     </header>
 

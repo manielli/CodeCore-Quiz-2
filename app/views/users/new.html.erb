@@ -9,29 +9,29 @@
 
         <div>
             <%= f.label(:first_name) %></label>
-            <%= f.text_field(:first_name) %>
+            <%= f.text_field(:first_name, class: "form-control") %>
         </div>
 
         <div>
             <%= f.label(:last_name) %></label>
-            <%= f.text_field(:last_name) %>
+            <%= f.text_field(:last_name, class: "form-control") %>
         </div>
 
         <div>
-            <%= f.label(:email) %></label>
-            <%= f.email_field(:email) %>
+            <%= f.label(:email) %></label> <br>
+            <%= f.email_field(:email, class: "form-control") %>
         </div>
 
         <div>
-            <%= f.label(:password) %></label>
-            <%= f.password_field(:password) %>
+            <%= f.label(:password) %></label> <br>
+            <%= f.password_field(:password, class: "form-control") %>
         </div>
 
         <div>
-            <%= f.label(:password_confirmation)%></label>
-            <%= f.password_field(:password_confirmation) %>
+            <%= f.label(:password_confirmation)%></label> <br>
+            <%= f.password_field(:password_confirmation, class: "form-control") %>
         </div>
 
-            <%= f.submit "Sign Up" %>
+            <%= f.submit "Sign Up", class: "mt-2 btn btn-primary form-control" %>
 
     <% end %>
