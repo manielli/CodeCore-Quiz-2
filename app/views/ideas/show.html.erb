@@ -28,3 +28,45 @@
         <% end %>
     </div>
 </div>
+
+<h2>Reviews</h2>
+
+<%= form_with(model: [@idea, @review], local: true) do |f| %>
+    <% if @idea.errors.present? %>
+        <p class="form-errors">
+            <%= @idea.errors.full_messages.join(", ") %>
+        </p>
+    <% end %>
+
+    <div>
+        <%= f.text_area(:body, cols: 50, rows: 5, placeholder: "What are your thoughts about this idea?") %>
+    </div>
+
+    <%= f.submit "Submit Review" %>
+<% end %>
+
+<ul class="review-list">
+    <% @reviews.each do |review| %>
+        <li>
+            <strong> <%= review.user.full_name %> submitted this review: </strong> <br>
+            <p>
+                <%= review.body %> <br>
+                •
+                <small>Reviewed <%= time_ago_in_words(review.created_at) %> ago</small>
+                <% if can?(:delete, review) %>
+                    <small>
+                        <%= link_to(
+                            "Delete", 
+                            idea_review_path(@idea.id, review.id),
+                            method: :delete,
+                            data: {
+                                confirm: "Are you sure?"
+                            }
+                        ) %>
+                    </small>
+                    
+                <% end %>
+            </p>
+        </li>
+    <% end %>
+</ul>

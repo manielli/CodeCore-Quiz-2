@@ -1,4 +1,4 @@
-    <div class="form-group">
+    <div>
         <%= form_with(model: @idea, local: true) do |form| %>
             
             <% if @idea.errors.present? %>
@@ -6,19 +6,15 @@
                     <%= @idea.errors.full_messages.join(", ") %>    
                 </p>
             <% end %>
-
-            <div class="form-group">
-                <label for="title"><%= form.label :title %></label>
-                <input type="text" class="form-control" placeholder="Enter a title for you idea (required)" ><%= form.text_field :title %>
+            <div class="mt-2">
+                <%= form.label :title %> <br>
+                <%= form.text_area :title, cols: 50, rows: 2 %>
             </div>
 
-            <div class="form-group">
-                <label for="description"><%= form.label :description %></label>
-                <input type="text" class="form-control" placeholder="Enter a description for your idea (also required)"><%= form.text_area :description %>
+            <div>
+                <%= form.label :description %> <br>
+                <%= form.text_area :description, cols: 50, rows: 10 %>
             </div>
-
-            <button type="submit" class="btn btn-primary m-2">
                 <%= form.submit "Submit Idea"%>
-            </button>
         <% end %>
     </div>

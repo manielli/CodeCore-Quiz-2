@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Idea.destroy_all
+Review.destroy_all
 User.destroy_all
 
 PASSWORD = "supersecret"
@@ -33,7 +34,7 @@ end
 
 users = User.all
 
-25.times do 
+50.times do 
 
     created_at = Faker::Date.backward(60)
 
@@ -45,10 +46,21 @@ users = User.all
         user: users.sample
     )
 
+    if i.valid?
+        rand(0..15).times do
+            i.reviews << Review.new(
+                body: Faker::GreekPhilosophers.quote,
+                user: users.sample
+            )
+        end
+    end
+
 end
 
 ideas = Idea.all
+reviews = Review.all
 
 puts Cowsay.say("Generated #{ideas.count} ideas", :dragon)
+puts Cowsay.say("Generated #{reviews.count} reviews", :dragon)
 puts Cowsay.say("Generated #{users.count} users", :dragon)
 puts Cowsay.say("Login with #{super_user.email} and password: daenerystargaryen", :dragon)

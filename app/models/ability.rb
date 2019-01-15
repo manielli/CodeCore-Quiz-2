@@ -35,8 +35,8 @@ class Ability
       idea.user == user
     end
 
-    # can(:crud, Review) do |review|
-    #   review.user == user
-    # end
+    can(:crud, Review) do |review|
+      review.user == user
+    end
   end
 end
