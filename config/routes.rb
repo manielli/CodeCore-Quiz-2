@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
 
-  resources :ideas, only: [:new, :create, :show, :destroy]
+  resources :ideas, only: [:new, :create, :show, :edit, :update, :destroy]
 
   get("/", to: "ideas#index", as: :root)
 end

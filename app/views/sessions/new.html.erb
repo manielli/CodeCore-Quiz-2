@@ -1,17 +1,14 @@
-<form>
-    <%= form_with(model: @user, local: true) do |f| %>
-        <div class="form-group" >
-            <label for="email"><%= f.label(:email) %></label>
-            <input type="email" class="form-control" placeholder="Enter your email"><%= f.email_field(:email) %>
+
+    <%= form_with(url: session_path, local: true) do |f| %>
+        <div class="mt-2">
+            <%= f.label(:email) %></label>
+            <%= f.email_field(:email) %>
         </div>
 
-        <div class="form-control">
-            <label for="password"><%= f.label(:password) %></label>
-            <input type="password"><%= f.password_field(:password) %>
+        <div>
+            <%= f.label(:password) %></label>
+            <%= f.password_field(:password) %>
         </div>
 
-        <button type="submit" class="btn btn-primary">
             <%= f.submit "Sign In" %>
-        </button>
     <% end %>
-</form>

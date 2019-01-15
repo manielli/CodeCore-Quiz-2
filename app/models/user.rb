@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-    has_many :users, dependent: :nullify
-    
+    has_many :ideas, dependent: :nullify
+
     has_secure_password
 
     validates(

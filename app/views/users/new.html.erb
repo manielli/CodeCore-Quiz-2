@@ -1,5 +1,5 @@
 <h1>Sign Up</h1>
-<form>
+
     <%= form_with(model: @user, local:true) do |f| %>
         <% if @user.errors.any? %>
             <p>
@@ -7,33 +7,31 @@
             </p>
         <% end %>
 
-        <div class="form-group">
-            <label for="first_name"><%= f.label(:first_name) %></label>
-            <input type="text" class="form-control" placeholder="Enter your first name" ><%= f.text_field(:first_name) %>
+        <div>
+            <%= f.label(:first_name) %></label>
+            <%= f.text_field(:first_name) %>
         </div>
 
-        <div class="form-group">
-            <label for="last_name"><%= f.label(:last_name) %></label>
-            <input type="text" class="form-control" placeholder="Enter your last name" ><%= f.text_field(:last_name) %>
+        <div>
+            <%= f.label(:last_name) %></label>
+            <%= f.text_field(:last_name) %>
         </div>
 
-        <div class="form-group">
-            <label for="email"><%= f.label(:email) %></label>
-            <input type="email" class="form-control" placeholder="Enter your email" ><%= f.email_field(:email) %>
+        <div>
+            <%= f.label(:email) %></label>
+            <%= f.email_field(:email) %>
         </div>
 
-        <div class="form-group">
-            <label for="password"><%= f.label(:password) %></label>
-            <input type="password" class="form-control" placeholder="Password"><%= f.password_field(:password) %>
+        <div>
+            <%= f.label(:password) %></label>
+            <%= f.password_field(:password) %>
         </div>
 
-        <div class="form-group">
-            <label for="password"><%= f.label(:password_confirmation)%></label>
-            <input type="password" class="form-control" placeholder="Password Confirmation"><%= f.password_field(:password_confirmation) %>
+        <div>
+            <%= f.label(:password_confirmation)%></label>
+            <%= f.password_field(:password_confirmation) %>
         </div>
 
-        <button type="submit" class="btn btn-primary">
             <%= f.submit "Sign Up" %>
-        </button>
+
     <% end %>
-</form>

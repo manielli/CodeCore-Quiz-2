@@ -1,10 +1,30 @@
 <div class="card">
     <div class="card-body">
-        <h3 class="card-title" >
+        <h5 class="card-title m-2" >
             <%= @idea.title %>
-        </h3>
-        <p class="card-text text-dark">
+        </h5>
+        <p class="card-text text-dark m-2">
             <%= @idea.description %>
         </p>
+        •
+        <small>Created by: <%= @idea.user&.full_name || "Deleted User" %></small>
+        •
+        <small>Posted <%= time_ago_in_words(@idea.created_at) %> ago</small>
+        •
+        <small>Last Edited <%= time_ago_in_words(@idea.updated_at) %> ago</small>
+    </div>
+    <div class="card-body">
+        <% if can?(:edit, @idea) %>
+            <small>
+                •
+                <%= link_to("Edit", edit_idea_path(@idea.id)) %>
+            </small>
+        <% end %>
+        <% if can?(:delete, @idea) %>
+            <small>
+                •
+                <%= link_to("Delete", idea_path(@idea.id), method: :delete, data: { confirm: "Are you sure?"}) %>
+            </small>
+        <% end %>
     </div>
 </div>

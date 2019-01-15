@@ -15,7 +15,8 @@ super_user = User.create(
     first_name: "Jon",
     last_name: "Snow",
     email: "js@winterfell.gov",
-    password: "daenerystargaryen"
+    password: "daenerystargaryen",
+    admin: true
 )
 
 10.times do
@@ -50,3 +51,4 @@ ideas = Idea.all
 
 puts Cowsay.say("Generated #{ideas.count} ideas", :dragon)
 puts Cowsay.say("Generated #{users.count} users", :dragon)
+puts Cowsay.say("Login with #{super_user.email} and password: daenerystargaryen", :dragon)
