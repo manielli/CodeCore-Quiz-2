@@ -1,6 +1,6 @@
-<h1>Sign Up</h1>
-
-    <%= form_with(model: @user, local:true) do |f| %>
+<div class="form-group">
+    <h1>Sign Up</h1>
+    <%= form_with(model: @user, local: true) do |f| %>
         <% if @user.errors.any? %>
             <p>
                 <%= @user.errors.full_messages.join(", ") %>
@@ -8,30 +8,30 @@
         <% end %>
 
         <div>
-            <%= f.label(:first_name) %></label>
+            <%= f.label(:first_name) %>
             <%= f.text_field(:first_name, class: "form-control") %>
         </div>
 
         <div>
-            <%= f.label(:last_name) %></label>
+            <%= f.label(:last_name) %>
             <%= f.text_field(:last_name, class: "form-control") %>
         </div>
 
         <div>
-            <%= f.label(:email) %></label> <br>
+            <%= f.label(:email) %>
             <%= f.email_field(:email, class: "form-control") %>
         </div>
 
         <div>
-            <%= f.label(:password) %></label> <br>
+            <%= f.label(:password) %>
             <%= f.password_field(:password, class: "form-control") %>
         </div>
 
         <div>
-            <%= f.label(:password_confirmation)%></label> <br>
+            <%= f.label(:password_confirmation)%>
             <%= f.password_field(:password_confirmation, class: "form-control") %>
         </div>
 
             <%= f.submit "Sign Up", class: "mt-2 btn btn-primary form-control" %>
-
     <% end %>
+</div>
