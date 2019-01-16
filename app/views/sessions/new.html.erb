@@ -1,13 +1,14 @@
+<div class="form-group">
+    <%= form_with(url: session_path, local: true) do |f| %>
+        <div class="mt-2">
+            <%= f.label(:email) %>
+            <%= f.email_field(:email, class: "form-control") %>
+        </div>
 
-<%= form_with(url: session_path, local: true) do |f| %>
-    <div class="mt-2">
-        <%= f.label(:email) %></label>
-        <%= f.email_field(:email, class: "form-control") %>
-    </div>
-
-    <div>
-        <%= f.label(:password) %></label>
-        <%= f.password_field(:password, class: "form-control") %>
-    </div>
-        <%= f.submit "Sign In", class: "mt-2 btn btn-primary form-control" %>
-<% end %>
+        <div>
+            <%= f.label(:password) %>
+            <%= f.password_field(:password, class: "form-control") %>
+        </div>
+            <%= f.submit "Sign In", class: "mt-2 btn btn-primary form-control" %>
+    <% end %>
+</div>
