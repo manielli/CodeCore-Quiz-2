@@ -1,0 +1,16 @@
+<ul class="idea-list m-2">
+    <% @ideas.each do |idea| %>
+        <div class="card m-2">
+            <div class="card-body">
+                <h5 class="card-title" >
+                    <%= link_to(idea.title, idea_path(idea.id)) %>
+                </h5>
+                <p class="card-text text-dark">
+                    <%= idea.description %>
+                </p>
+                <small class="card-text text-dark" >By <%= idea.user.full_name %></small>
+                <small class="card-text text-dark" >Created <%= time_ago_in_words(idea.created_at) %> ago </small>
+            </div>
+        </div>
+    <% end %>
+</ul>

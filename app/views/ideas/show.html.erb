@@ -1,0 +1,73 @@
+<div class="card m-2">
+    <div class="card-body">
+        <h5 class="card-title m-2" >
+            <%= @idea.title %>
+        </h5>
+        <p class="card-text text-dark m-2">
+            <%= @idea.description %>
+        </p>
+        •
+        <small>Created by: <%= @idea.user&.full_name || "Deleted User" %></small>
+        •
+        <small>Posted <%= time_ago_in_words(@idea.created_at) %> ago</small>
+        •
+        <small>Last Edited <%= time_ago_in_words(@idea.updated_at) %> ago</small>
+    </div>
+    <div class="card-body">
+        <% if can?(:edit, @idea) %>
+            <small>
+                •
+                <%= link_to("Edit", edit_idea_path(@idea.id)) %>
+            </small>
+        <% end %>
+        <% if can?(:delete, @idea) %>
+            <small>
+                •
+                <%= link_to("Delete", idea_path(@idea.id), method: :delete, data: { confirm: "Are you sure?"}) %>
+            </small>
+        <% end %>
+    </div>
+</div>
+
+<div class="form-group">
+    <h2 class="m-2">Reviews</h2>
+    <%= form_with(model: [@idea, @review], local: true) do |f| %>
+        <% if @idea.errors.present? %>
+            <p class="form-errors">
+                <%= @idea.errors.full_messages.join(", ") %>
+            </p>
+        <% end %>
+
+        <div class="m-2">
+            <%= f.text_area(:body, cols: 50, rows: 5, class: "form-control" ,placeholder: "What are your thoughts about this idea?") %>
+        </div>
+
+        <%= f.submit "Submit Review", class: "m-2 btn btn-primary bg-light text-primary" %>
+    <% end %>
+</div>
+
+<ul class="review-list m-2">
+    <% @reviews.each do |review| %>
+        <li>
+            <strong> <%= review.user.full_name %> submitted this review: </strong> <br>
+            <p>
+                <%= review.body %> <br>
+                •
+                <small>Reviewed <%= time_ago_in_words(review.created_at) %> ago</small>
+                <% if can?(:delete, review) %>
+                    <small>
+                        <%= link_to(
+                            "Delete", 
+                            idea_review_path(@idea.id, review.id),
+                            method: :delete,
+                            data: {
+                                confirm: "Are you sure?"
+                            }
+                        ) %>
+                    </small>
+                    
+                <% end %>
+            </p>
+        </li>
+    <% end %>
+</ul>
